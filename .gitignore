@@ -28,5 +28,25 @@ go.work.sum
 .env
 
 # Editor/IDE
-# .idea/
-# .vscode/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Next.js / Node
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+frontend/.npm
+frontend/.env*.local
+
+# Backend build
+backend/app
+backend/api
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Private context (contains personal/financial goals)
+levelscorner_context.md

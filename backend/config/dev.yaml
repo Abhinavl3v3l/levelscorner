@@ -1,0 +1,5 @@
+env: development
+port: "8080"
+allowed_origin: "http://localhost"
+jwt_secret: "dev_secret_do_not_use_in_production"
+admin_password: "dev_password_change_in_production"
