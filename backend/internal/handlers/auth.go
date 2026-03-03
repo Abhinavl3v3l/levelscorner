@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Abhinavl3v3l/levelscorner/backend/internal/config"
+	"github.com/levelscorner/levelscorner/backend/internal/config"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )

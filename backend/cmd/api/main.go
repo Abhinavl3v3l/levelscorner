@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/Abhinavl3v3l/levelscorner/backend/internal/config"
-	"github.com/Abhinavl3v3l/levelscorner/backend/internal/handlers"
-	"github.com/Abhinavl3v3l/levelscorner/backend/internal/middleware"
+	"github.com/levelscorner/levelscorner/backend/internal/config"
+	"github.com/levelscorner/levelscorner/backend/internal/handlers"
+	"github.com/levelscorner/levelscorner/backend/internal/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,6 +29,7 @@ func main() {
 		api.GET("/experience", handlers.GetExperience)
 		api.GET("/skills", handlers.GetSkills)
 		api.GET("/posts", handlers.GetPosts)
+		api.POST("/chat", handlers.ChatStream(cfg))
 		api.POST("/auth/token", handlers.Login(cfg))
 	}
 

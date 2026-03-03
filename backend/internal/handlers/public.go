@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/Abhinavl3v3l/levelscorner/backend/internal/data"
+	"github.com/levelscorner/levelscorner/backend/internal/data"
 	"github.com/gin-gonic/gin"
 )
 

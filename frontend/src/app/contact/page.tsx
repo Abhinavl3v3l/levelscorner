@@ -38,8 +38,8 @@ const links: {
   },
   {
     label: "GitHub",
-    value: "github.com/Abhinavl3v3l",
-    href: "https://github.com/Abhinavl3v3l",
+    value: "github.com/levelscorner",
+    href: "https://github.com/levelscorner",
     description: "Code, projects, and experiments.",
     num: "03",
     Icon: SiGithub,

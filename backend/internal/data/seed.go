@@ -1,6 +1,6 @@
 package data
 
-import "github.com/Abhinavl3v3l/levelscorner/backend/internal/models"
+import "github.com/levelscorner/levelscorner/backend/internal/models"
 
 var Projects = []models.Project{}
 

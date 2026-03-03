@@ -4,7 +4,7 @@ import type { IconType } from "react-icons";
 
 const footerLinks: { label: string; href: string; Icon: IconType }[] = [
   { label: "linkedin", href: "https://linkedin.com/in/abhinavrl4f", Icon: SiLinkedin },
-  { label: "github",   href: "https://github.com/Abhinavl3v3l",    Icon: SiGithub   },
+  { label: "github",   href: "https://github.com/levelscorner",    Icon: SiGithub   },
   { label: "email",    href: "mailto:rabhinavcs@gmail.com",         Icon: LuMail     },
 ];
 

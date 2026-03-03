@@ -1,4 +1,4 @@
-module github.com/Abhinavl3v3l/levelscorner/backend
+module github.com/levelscorner/levelscorner/backend
 
 go 1.25.0
 
@@ -6,6 +6,7 @@ require (
 	github.com/gin-contrib/cors v1.7.6
 	github.com/gin-gonic/gin v1.12.0
 	github.com/golang-jwt/jwt/v5 v5.3.1
+	github.com/liushuangls/go-anthropic/v2 v2.17.1
 	github.com/spf13/viper v1.21.0
 )
 

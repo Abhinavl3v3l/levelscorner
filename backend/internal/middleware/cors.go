@@ -3,7 +3,7 @@ package middleware
 import (
 	"time"
 
-	"github.com/Abhinavl3v3l/levelscorner/backend/internal/config"
+	"github.com/levelscorner/levelscorner/backend/internal/config"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
