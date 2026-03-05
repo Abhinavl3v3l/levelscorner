@@ -1,6 +1,3 @@
 env: production
 port: "8080"
 allowed_origin: "https://levelscorner.com"
-# Secrets must be set via environment variables — never hardcode here
-jwt_secret: ""
-admin_password: ""

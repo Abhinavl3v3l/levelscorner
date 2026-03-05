@@ -23,6 +23,8 @@ services:
       - APP_ENV=${APP_ENV:-production}
       # Set in .env — never hardcode secrets here
       - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
     restart: unless-stopped
     networks:
       - app

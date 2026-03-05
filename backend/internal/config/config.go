@@ -14,6 +14,7 @@ type Config struct {
 	AllowedOrigin string `mapstructure:"allowed_origin"`
 	JWTSecret     string `mapstructure:"jwt_secret"`
 	AdminPassword string `mapstructure:"admin_password"`
+	AnthropicKey  string `mapstructure:"anthropic_api_key"`
 }
 
 func Load() (*Config, error) {
@@ -27,8 +28,13 @@ func Load() (*Config, error) {
 	viper.AddConfigPath("./config")
 	viper.AddConfigPath("/app/config")
 
+	// Explicitly bind environment variables for secrets
+	viper.BindEnv("jwt_secret", "JWT_SECRET")
+	viper.BindEnv("admin_password", "ADMIN_PASSWORD")
+	viper.BindEnv("anthropic_api_key", "ANTHROPIC_API_KEY")
+
 	// Environment variables override config file values.
-	// e.g. JWT_SECRET overrides jwt_secret
+	// e.g. PORT overrides port
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.AutomaticEnv()
 

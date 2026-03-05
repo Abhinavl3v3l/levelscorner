@@ -1,25 +1,39 @@
 package main
 
 import (
-	"log"
-
 	"github.com/levelscorner/levelscorner/backend/internal/config"
 	"github.com/levelscorner/levelscorner/backend/internal/handlers"
+	"github.com/levelscorner/levelscorner/backend/internal/logger"
 	"github.com/levelscorner/levelscorner/backend/internal/middleware"
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 func main() {
 	cfg, err := config.Load()
 	if err != nil {
-		log.Fatalf("failed to load config: %v", err)
+		// logger not ready yet — fall back to panic
+		panic("failed to load config: " + err.Error())
 	}
+
+	if err := logger.Init(cfg.Env); err != nil {
+		panic("failed to init logger: " + err.Error())
+	}
+	defer logger.L.Sync() //nolint:errcheck
+
+	logger.L.Info("starting server",
+		zap.String("env", cfg.Env),
+		zap.String("port", cfg.Port),
+	)
 
 	if cfg.Env == "production" {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	r := gin.Default()
+	// Use gin.New() instead of gin.Default() so we control the middleware stack.
+	r := gin.New()
+	r.Use(gin.Recovery())
+	r.Use(middleware.RequestLogger())
 	r.Use(middleware.CORS(cfg))
 
 	api := r.Group("/api")
@@ -30,6 +44,8 @@ func main() {
 		api.GET("/skills", handlers.GetSkills)
 		api.GET("/posts", handlers.GetPosts)
 		api.POST("/chat", handlers.ChatStream(cfg))
+		api.GET("/chat/status", handlers.GetChatStatus)
+		api.POST("/chat/suggestions", handlers.GetSuggestions(cfg))
 		api.POST("/auth/token", handlers.Login(cfg))
 	}
 
@@ -41,8 +57,7 @@ func main() {
 		})
 	}
 
-	log.Printf("starting in %s mode on :%s", cfg.Env, cfg.Port)
 	if err := r.Run(":" + cfg.Port); err != nil {
-		log.Fatalf("server failed: %v", err)
+		logger.L.Fatal("server failed", zap.Error(err))
 	}
 }
