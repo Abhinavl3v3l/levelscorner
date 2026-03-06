@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { TerminalChatbot } from "@/components/TerminalChatbot";
+import { ChatWidget } from "@/components/ChatWidget";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -46,7 +46,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
-          <TerminalChatbot />
+          <ChatWidget />
           <Footer />
         </ThemeProvider>
       </body>

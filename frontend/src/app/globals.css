@@ -621,6 +621,45 @@ body::after {
 .toggle-pill.is-dark       .toggle-icon-moon { opacity: 0; transform: scale(0.6) rotate(-30deg); }
 .toggle-pill.is-dark       .toggle-icon-sun  { opacity: 1; transform: scale(1) rotate(0deg); }
 
+/* ─── Chat FAB button ────────────────────────────────── */
+
+.chat-fab {
+  background-color: rgba(6, 6, 12, 0.95);
+  border: 1px solid rgba(114, 217, 160, 0.28);
+  color: var(--accent);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(114, 217, 160, 0.1);
+  animation: chat-fab-pulse 3.5s ease-out infinite;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+}
+.chat-fab:hover {
+  border-color: rgba(114, 217, 160, 0.55);
+  box-shadow: 0 6px 28px rgba(114, 217, 160, 0.22);
+  transform: translateY(-2px);
+  animation: none;
+}
+@keyframes chat-fab-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(114, 217, 160, 0.10); }
+  50%       { box-shadow: 0 4px 28px rgba(114, 217, 160, 0.24), 0 0 0 4px rgba(114, 217, 160, 0.06); }
+}
+
+/* ─── Chat page scanlines ────────────────────────────── */
+
+.chat-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(114, 217, 160, 0.008) 2px,
+    rgba(114, 217, 160, 0.008) 4px
+  );
+}
+
+/* ─── Hide scrollbar (mobile chips) ─────────────────── */
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ─── Section-row (kept for any legacy use) ──────────── */
 
 .section-row {
